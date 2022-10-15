@@ -1,0 +1,12 @@
+﻿<%inherit file="template.html"/>
+
+<h3>Liste des étudiants, classés par ordre d'âge</h3>
+	<% 	# code python pour changer l'affichage de la date!!!
+		from BDEtudiantUtils import isoDate2String
+		maListe = []
+		for id ,p, n, d in mesEtud :
+		    maListe.append((p,n,isoDate2String(str(d))))	
+	%>	
+% for p, n, d in maListe :
+	${d} : ${p} ${n} <br/>
+% endfor

@@ -1,0 +1,46 @@
+<%inherit file="template.html"/>
+<%doc> début de ce qui va être le "self.body()" ...  </%doc>
+<h3 class="center">Affichage</h3>
+
+<pre>
+    <h4>
+Affichage des données contenues dans la base.
+3 affichages disponibles : tout afficher, affichage par âge, affichage du plus jeune.
+</h4>
+</pre>
+<h3>Liste des Tournoi</h3>
+<table class="sae_aff_tournoi">
+    <tr class="sae_table">
+        <th>Numero</th>
+        <th>Equipe</th>
+        <th>Pseudo</th>
+        <th>Date De Naissance</th>
+        <th>Email</th>
+
+    </tr>
+    % for t in AffichageJoueurs :
+    <tr>
+        <td>${t[0]}</td>
+        <td>${t[2]}</td>
+        <td>${t[1]}</td>
+        <td>${t[3]}</td>
+        <td>${t[4]}</td>
+
+        </td>
+        <td>
+            <form action="JoueurEdit" method="get">
+                <input type="hidden" name="idJoueur" value="${t[0]}"/>
+                <input type="submit" value="Editer"/>
+            </form>
+        </td>
+        <td>
+            <form onclick="return confirm('Voulez-vous vraiment supprimer ce joueur ? Joueur sélectionné : n°${t[0]}, Nom : ${t[2]}');" action="JoueurDelete" method="get">
+                <input type="hidden" name="idJoueur" value="${t[0]}"/>
+                <input type="submit" value="Supprimer"/>
+            </form>
+        </td>
+    % endfor
+</table>
+<%doc> fin de ce qui va être le "self.body()" ...  </%doc>
+
+

@@ -1,0 +1,44 @@
+<%inherit file="template.html"/>
+<%doc> début de ce qui va être le "self.body()" ...  </%doc>
+<h3 class="center">Affichage</h3>
+
+<pre>
+    <h4>
+Affichage des données contenues dans la base.
+3 affichages disponibles : tout afficher, affichage par âge, affichage du plus jeune.
+</h4>
+</pre>
+<h3>Liste des Tournoi</h3>
+<table class="sae_aff_tournoi">
+    <tr class="sae_table">
+        <th>Numero</th>
+        <th>Logo</th>
+        <th>Nom</th>
+        <th>Nombre de Joueurs</th>
+    </tr>
+    % for t in AffichageEquipes :
+    <tr>
+        <td>${t[0]}</td>
+        <td><img class = "sae_img_equipe"
+            src= ${t[3]} > </td>
+        <td>${t[1]}</td>
+        <td>${t[2]}</td>
+        <td>
+            <form action="EquipeEdit" method="get">
+                <input type="hidden" name="idEquipe" value="${t[0]}"/>
+                <input type="submit" value="Editer"/>
+            </form>
+        </td>
+        </td>
+    % endfor
+</table>
+<script type = "text/javascript">
+    function Editer(idEquipe) {
+        var Nom = prompt("Entrez le nouveau nom de l'équipe");
+        var nbJoueur = prompt("Entrez le nouveau nombre de joueurs");
+        var Logo = prompt("Entrez le nouveau logo");
+        
+    }
+<%doc> fin de ce qui va être le "self.body()" ...  </%doc>
+
+

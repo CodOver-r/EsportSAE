@@ -1,0 +1,55 @@
+<%inherit file="template.html"/>
+<h3 class="center">Affichage</h3>
+
+<h4>Formulaire d'édition d'équipe</h4>
+<form action="TournoiEditREQ" method="get">
+    <table>
+        <tr>
+            <td>Numero du Tournoi (ceci est cachée) :</td>
+            <td><input type="hidden" name="idTournoi" value="${AffichageTournoi[0][0]}"/></td>
+        <tr>
+            <td>Nom du Tournoi :</td>
+            <td><input type="text" name="Nom" value="${AffichageTournoi[0][1]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Date de début :</td>
+            <td><input type="date" name="DateDebut" value="${AffichageTournoi[0][2]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Date de fin :</td>
+            <td><input type="date" name="DateFin" value="${AffichageTournoi[0][3]}" onFocus="this.value='';" /></td>
+        </tr>
+        <tr>
+            <td>Web :</td>
+            <td><input type="text" name="Web" value="${AffichageTournoi[0][4]}" onFocus="this.value='';" /></td>
+        </tr>
+        <tr>
+            <td>Lieu :</td>
+            <td><input type="text" name="Lieu" value="${AffichageTournoi[0][5]}" onFocus="this.value='';" /></td>
+        </tr>
+        
+        <tr>
+            <td>Prix :</td>
+            <td><input type="number" name="Prix" value="${AffichageTournoi[0][6]}" onFocus="this.value='';" /></td>
+        </tr>
+
+        <tr>
+            <td>Jeu :</td>
+            <td><input type="text" name="Jeu" value="${AffichageTournoi[0][7]}" onFocus="this.value='';" /></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <input type="submit" value="Valider"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+% if TournoiEditREQ == 1 :
+<h4>Edition réussie</h4>
+<button onclick="window.location.href='TournoiAffichage'">Retour aux tournois</button>
+% endif
+
+
+

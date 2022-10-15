@@ -1,0 +1,36 @@
+<%inherit file="template.html"/>
+<h3 class="center">Affichage</h3>
+
+<h4>Formulaire d'insertion d'équipe</h4>
+<form action="EquipeInsertREQ" method="get">
+    <table>
+        <tr>
+            <td>Numero de l'équipe :</td>
+            <td><input type="number" name="numEquipe"/></td>
+        <tr>
+            <td>Pseudo :</td>
+            <td><input type="text" name="Nom"/></td>
+        </tr>
+        <tr>
+            <td>Date de naissance :</td>
+            <td><input type="date" name="nbJoueur"/></td>
+        </tr>
+        <tr>
+            <td>email :</td>
+            <td><input type="text" name="Logo"/></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Valider"/>
+            </td>
+        </tr>
+    </table>
+</form>>
+
+% if JoueurInsertREQ == 1 :
+<h4>Insertion réussie</h4>
+% endif
+
+<%doc> fin de ce qui va être le "self.body()" ...  </%doc>
+
+

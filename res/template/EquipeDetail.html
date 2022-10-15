@@ -1,0 +1,58 @@
+<%inherit file="template.html"/>
+
+% if AffichageEquipes is not None:
+
+<pre>
+    <h2 class="centerSae"> Affichage du tournoi :  </h2>
+    <h3 class="centerSae">${AffichageEquipes[0][1]}</h3>
+</pre>
+<table class="TableDetailTournoi">
+    <tbody>
+    <tr>
+    <td> Numero de l'équipe : </td>
+    <td> ${AffichageEquipes[0][0]} </td>
+    </tr>
+    <tr>
+    <td> Nombres de joueurs : </td>
+    <td> ${AffichageEquipes[0][2]} </td>
+    </tr>
+    <tr>
+    <td> Logo : </td>
+    <td><img class="imgTournoiDetail" src="${AffichageEquipes[0][3]}"></td>
+    </tr>
+    </tbody>
+    </table>
+    <br>
+
+    <table class="TableDetailTournoiXmatch">
+        <thead>
+        <tr>
+        <th>Numero de joueur</th>
+        <th>Pseudo</th>
+        <th>Date de naissance</th>
+        <th>Email</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        % for t in AffichageJoueurs :
+        <tr>
+        <td >${t[0]} </td>
+        <td > ${t[2]} </td>
+        <td > ${t[3]} </td>
+        <td> ${t[4]} </td>
+        <td> <a href="JoueurEdit?idJoueur=${t[0]}">Editer</a> </td>
+        <td>
+            <form onclick="return confirm('Voulez-vous vraiment supprimer ce joueur ? ');" action="JoueurDeleteDetail" method="post">
+                <input type="hidden" name="idJoueur" value="${t[0]}"/>
+                <input type="hidden" name="idEquipe" value="${AffichageEquipes[0][0]}"/>
+                <input type="submit" value="Supprimer"/>
+            </form>
+        </td>
+        </tr>
+        % endfor
+% endif
+
+        </tbody>
+    </table>

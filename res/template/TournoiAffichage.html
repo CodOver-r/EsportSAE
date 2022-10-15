@@ -1,0 +1,57 @@
+<%inherit file="template.html"/>
+<%doc> début de ce qui va être le "self.body()" ...  </%doc>
+<h3 class="center">Affichage</h3>
+
+<pre>
+    <h4>
+Affichage des données contenues dans la base.
+3 affichages disponibles : tout afficher, affichage par âge, affichage du plus jeune.
+</h4>
+</pre>
+<h3>Liste des Tournoi</h3>
+<table class="sae_aff_tournoi">
+    <tr class="sae_table">
+        <th>Numero</th>
+        <th>Nom</th>
+        <th>Date De Début</th>
+        <th>Date De Fin</th>
+        <th>Site Web</th>
+        <th>Lieu</th>
+        <th>Prix</th>
+        <th>Jeu</th>
+        <th>Action</th>
+    </tr>
+    % for t in AffichageTournois :
+    <tr>
+        <td>${t[0]}</td>
+        <td>${t[1]}</td>
+        <td>${t[2]}</td>
+        <td>${t[3]}</td>
+        <td>${t[4]}</td>
+        <td>${t[5]}</td>
+        <td>${t[6]}</td>
+        <td>${t[7]}</td>
+
+        <td>
+            <form action="TournoiDetail" method="get">
+                <input type="hidden" name="idTournoi" value="${t[0]}"/>
+                <input type="submit" value="Afficher les détails"/>
+            </form>
+        </td>
+
+        <td>
+            <form action="TournoiEdit" method="get">
+                <input type="hidden" name="idTournoi" value="${t[0]}"/>
+                <input type="submit" value="Editer"/>
+            </form>
+        </td>
+        <td>
+            <form onclick="return confirm('Voulez-vous vraiment supprimer ce tournoi ? Tournoi sélectionné : n°${t[0]}, Nom : ${t[1]}, Supprimer un tournoi supprime ses données associée (Match & Classement)');" action="TournoiDelete" method="post">
+                <input type="hidden" name="idTournoi" value="${t[0]}"/>
+                <input type="submit" value="Supprimer"/>
+            </form>
+        </td>
+    % endfor
+</table>
+
+

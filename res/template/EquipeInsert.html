@@ -1,0 +1,38 @@
+<%inherit file="template.html"/>
+<h3 class="center">Affichage</h3>
+
+<h4>Formulaire d'insertion d'équipe</h4>
+<form action="EquipeInsertREQ" method="get">
+    <table>
+        <tr>
+            <td>Nom de l'équipe :</td>
+            <td><input type="text" name="Nom"/></td>
+        </tr>
+        <tr>
+            <td>Nombres de joueurs :</td>
+            <td><input type="text" name="nbJoueur"/></td>
+        </tr>
+        <tr>
+            <td>Logo (URL ou /static/img/equipe/LOGO.png) :</td>
+            <td><input type="text" name="Logo"/></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Valider"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+% if EquipeInsertREQ == 1 :
+<h4>Insertion réussie</h4>
+% endif
+
+<script type="text/javascript">
+    function Message() {
+        var msg="Message sur la ligne 1.nMessage sur la ligne 2.n...";
+        console.log(msg)
+        alert(msg);
+    }
+ </script>
+

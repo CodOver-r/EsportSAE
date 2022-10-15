@@ -1,0 +1,146 @@
+<%inherit file="template.html"/>
+
+% if AffichageTournois is not None:
+
+<pre>
+    <h2 class="centerSae"> Affichage du tournoi :  </h2>
+    <h3 class="centerSae">${AffichageTournois[0][1]}</h3>
+</pre>
+<table class="TableDetailTournoi">
+    <tbody>
+    <tr>
+    <td> Numero : </td>
+    <td> ${AffichageTournois[0][0]} </td>
+    </tr>
+    <tr>
+    <td> Nom : </td>
+    <td> ${AffichageTournois[0][1]} </td>
+    </tr>
+    <tr>
+    <td> Date de début : </td>
+    <td> ${AffichageTournois[0][2]} </td>
+    </tr>
+    <tr>
+    <td> Date de fin : </td>
+    <td> ${AffichageTournois[0][3]} </td>
+    </tr>
+    <tr>
+    <td> Lieu : </td>
+    <td> ${AffichageTournois[0][5]} </td>
+    </tr>
+    <tr>
+    <td> Site Web : </td>
+    <td> ${AffichageTournois[0][4]} </td>
+    </tr>
+    <tr>
+    <td> Prix : </td>
+    <td> ${AffichageTournois[0][6]} </td>
+    </tr>
+    </tbody>
+    </table>
+    % endif
+    <br>
+
+    <div class="BlockTournoiDetail">
+<table class="TableDetailTournoiXequipe">
+    <thead>
+    <tr>
+    <th>Numero</th>
+    <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    % for t in AffichageEquipe :
+    <tr>
+    <td> ${t[0]} </td>
+    <td> ${t[1]} </td>
+    </tr>
+    % endfor
+    </tbody>
+    </table>
+        <table class="TableDetailTournoiXequipe">
+            <thead>
+            <tr>
+            <th>Position</th>
+            <th>Equipe</th>
+            <th>Score</th>
+            <th>Gain</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            % for t in AffichageClassement :
+            <tr>
+            <td> ${t[2]} </td>
+            <td> ${t[1]} </td>
+            <td> ${t[3]} </td>
+            <td> ${t[4]} </td>
+            <td> <a href="ClassementUpdate?id=${t[0]}">Editer</a> </td>
+            <td>
+                <form onclick="return confirm('Voulez-vous vraiment supprimer cette partie du classement ? ');" action="ClassementDelete" method="post">
+                    <input type="hidden" name="idClassement" value="${t[0]}"/>
+                    <input type="hidden" name="idTournoi" value="${AffichageTournois[0][0]}"/>
+                    <input type="submit" value="Supprimer"/>
+                </form>
+            </td>
+            </tr>
+            % endfor
+            </tbody>
+            </table>
+    </div>
+    <br>
+    <table class="TableDetailTournoiXmatch">
+        <thead>
+        <tr>
+        <th>Equipe</th>
+        <th></th>
+        <th>Score</th>
+        <th>Score</th>
+        <th></th>
+        <th>Equipe</th>
+        <th>Durée</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        % for t in AffichageMatch :
+        <tr>
+        % if t[1] > t[2] :
+        <td style="color: rgb(0, 200, 0);"> ${t[3]} </td>
+        <td> <img class="imgTournoiDetail" src="${t[4]}"> </td>
+        <td > ${t[1]} </td>
+        <td > ${t[2]} </td>
+        <td> <img class="imgTournoiDetail" src="${t[6]}"> </td>
+        <td style="color: rgb(255, 61, 61);"> ${t[5]} </td>
+        <td> ${t[0]} </td>
+        <td> <a href="MatchUpdate?id=${t[7]}">Editer</a> </td>
+        <td>
+            <form onclick="return confirm('Voulez-vous vraiment supprimer ce match ? ');" action="MatchDelete" method="post">
+                <input type="hidden" name="idMatch" value="${t[7]}"/>
+                <input type="hidden" name="idTournoi" value="${AffichageTournois[0][0]}"/>
+                <input type="submit" value="Supprimer"/>
+            </form>
+        </td>
+        % else :
+        <td style="color:  rgb(255, 61, 61);"> ${t[3]} </td>
+        <td> <img class="imgTournoiDetail" src="${t[4]}"> </td>
+        <td > ${t[1]} </td>
+        <td > ${t[2]} </td>
+        <td> <img class="imgTournoiDetail" src="${t[6]}"> </td>
+        <td style="color: rgb(0, 200, 0);"> ${t[5]} </td>
+        <td> ${t[0]} </td>
+        <td> <a href="MatchUpdate?id=${t[7]}">Editer</a> </td>
+        <td>
+            <form onclick="return confirm('Voulez-vous vraiment supprimer ce match ? ');" action="MatchDelete" method="post">
+                <input type="hidden" name="idMatch" value="${t[7]}"/>
+                <input type="hidden" name="idTournoi" value="${AffichageTournois[0][0]}"/>
+                <input type="submit" value="Supprimer"/>
+            </form>
+        </td>
+        % endif
+        </tr>
+        % endfor
+        </tbody>
+    </table>

@@ -1,0 +1,15 @@
+﻿<%inherit file="template.html"/>
+<%doc> début de ce qui va être le "self.body()" ...  </%doc>
+<h3 class="center">Affichage</h3>
+
+<pre>
+Affichage des données contenues dans la base.
+4 affichages disponibles : tout afficher, affichage par âge, affichage du plus jeune, afficher avec Id.
+</pre>
+<h3>Liste des étudiants</h3>
+% for e in mesEtud :
+	${e} <br />
+% endfor
+<%doc> fin de ce qui va être le "self.body()" ...  </%doc>
+
+

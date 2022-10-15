@@ -1,0 +1,46 @@
+<%inherit file="template.html"/>
+<h3 class="center">Affichage</h3>
+
+<pre>
+    <h4>
+Affichage des données contenues dans la base.
+3 affichages disponibles : tout afficher, affichage par âge, affichage du plus jeune.
+</h4>
+</pre>
+<h3>Liste des Tournoi</h3>
+<table class="sae_aff_tournoi">
+    <tr class="sae_table">
+        <th>Numero</th>
+        <th>Logo</th>
+        <th>Nom</th>
+        <th>Nombre de Joueurs</th>
+    </tr>
+    % for t in AffichageEquipes :
+    <tr>
+        <td>${t[0]}</td>
+        <td><img class = "sae_img_equipe"
+            src= ${t[3]} > </td>
+        <td>${t[1]}</td>
+        <td>${t[2]}</td>
+        <td>
+            <form action="EquipeDetail" method="get">
+                <input type="hidden" name="idEquipe" value="${t[0]}"/>
+                <input type="submit" value="Afficher les details"/>
+            </form>
+        </td>
+        <td>
+            <form action="EquipeEdit" method="get">
+                <input type="hidden" name="idEquipe" value="${t[0]}"/>
+                <input type="submit" value="Editer"/>
+            </form>
+        </td>
+        <td>
+            <form onclick="return confirm('Voulez-vous vraiment supprimer cet équipe ? Équipe sélectionné : n°${t[0]}, Nom : ${t[2]}');" action="EquipeDelete" method="get">
+                <input type="hidden" name="idEquipe" value="${t[0]}"/>
+                <input type="submit" value="Supprimer"/>
+            </form>
+        </td>
+    % endfor
+</table>
+
+

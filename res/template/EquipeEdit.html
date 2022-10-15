@@ -1,0 +1,36 @@
+<%inherit file="template.html"/>
+<h3 class="center">Affichage</h3>
+
+<h4>Formulaire d'édition d'équipe</h4>
+<form action="EquipeEditREQ" method="get">
+    <table>
+        <tr>
+            <td>Numero de l'equipe (ceci est cachée) :</td>
+            <td><input type="hidden" name="idEquipe" value="${AffichageEquipes[0][0]}"/></td>
+        <tr>
+            <td>Nom de l'équipe :</td>
+            <td><input type="text" name="Nom" value="${AffichageEquipes[0][1]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Nombres de joueurs :</td>
+            <td><input type="text" name="nbJoueur" value="${AffichageEquipes[0][2]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Logo :</td>
+            <td><input type="text" name="Logo" value="${AffichageEquipes[0][3]}" onFocus="this.value='';" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Valider"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+% if EquipeEditREQ == 1 :
+<h4>Edition réussie</h4>
+<button onclick="window.location.href='EquipeAffichage'">Retour aux équipes</button>
+% endif
+
+
+

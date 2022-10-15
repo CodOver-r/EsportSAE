@@ -1,0 +1,45 @@
+<%inherit file="template.html"/>
+<h3 class="center">Affichage</h3>
+
+<h4>Formulaire d'édition de match</h4>
+<form action="ClassementEditREQ" method="get">
+    <table>
+        <tr>
+            <td>Numero du classement (par défaut le classement choisi) :</td>
+            <td><input type="number" name="idClassement" value="${AffichageClassement[0][0]}"/></td>
+        </tr>
+        <tr>
+            <td>Numero du Tournoi :</td>
+            <td><input type="number" name="idTournoi" value="${AffichageClassement[0][1]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Numero de l'équipe :</td>
+            <td><input type="number" name="idEquipe" value="${AffichageClassement[0][2]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Position:</td>
+            <td><input type="text" name="Position" value="${AffichageClassement[0][3]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Points:</td>
+            <td><input type="text" name="Point" value="${AffichageClassement[0][4]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>Gain:</td>
+            <td><input type="number" name="Gain" value="${AffichageClassement[0][5]}" onFocus="this.value='';"/></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Valider"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+% if ClassementEditREQ == 1 :
+<h4>Edition réussie</h4>
+<button onclick="window.location.href='TournoiDetail?idTournoi=${AffichageClassement[0][1]}'">Retour au tournoi</button>
+% endif
+
+
+
