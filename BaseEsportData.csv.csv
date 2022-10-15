@@ -1,5 +1,0 @@
-_Equipe;NumEquipe;Nom;Nombre de joueur;Logo
-_Joueur;NumJoueur;Numéro d'équipe;Pseudo;Date de naissance;Email
-_Competition;NumCompetition ;Nom;Date de début;Date de fin;Web;Lieu;Prix;Jeu
-_Match;NumMatch;Numéro de compétition;Numéro d'équipe 1;Numéro d'équipe 2;Score équipe 1;Score équipe 2;Durée
-_Classement;NumClassement;Numéro de compétition;Numéro d'équipe;Position;Score;Gain
